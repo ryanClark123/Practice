@@ -4,6 +4,7 @@
     boorder-1
     border-zinc-200
     dark:border-zinc-600
+    shadow-lg
     ']) }}>
     {{ $slot }}
 </div>

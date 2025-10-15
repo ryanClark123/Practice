@@ -24,6 +24,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'image_url' => $this->faker->imageUrl(480, 480, 'scenery', true, 'Scenery'),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= 'password',
