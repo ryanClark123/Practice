@@ -13,7 +13,7 @@ class Index extends Component
     public function getPosts(){
         $post = Post::query()->with(['user', 'users', 'upvotes', 'downvotes'])->paginate($this->perPage);
         // dd($post->orderBy('upvotes_count', 'desc')->paginate($this->perPage));
-        
+            // dd($post);
         return $post;
 
     }

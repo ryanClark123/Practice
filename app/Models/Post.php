@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -26,7 +27,7 @@ class Post extends Model
             table: "post_votes",
             foreignPivotKey: "post_id",
             relatedPivotKey: "user_id",
-        )->withPivot('post_id','user_id', 'vote_Type');
+        )->withPivot('post_id','user_id', 'vote_type');
     }
 
     public function upvotes(){
@@ -35,5 +36,9 @@ class Post extends Model
     
     public function downvotes(){
         return $this->users()->wherePivot('vote_type' ,'down');
+    }
+
+    public function voteByUser($user_id){
+        return $this->users()->wherePivot('user_id', $user_id)->first()?->pivot->vote_type;
     }
 }
