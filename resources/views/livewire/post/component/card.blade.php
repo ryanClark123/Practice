@@ -25,10 +25,10 @@
 
             {{-- VOTES --}}
             <div class="w-auto flex flex-col gap-1 font-bold">
-                <span class="flex text-green-400 p-1.5 rounded border-1 border-green-400 hover:bg-green-100">
+                <span class="flex text-green-400 p-1.5 rounded border-1 border-green-400 hover:bg-green-200/30 dark:hover:bg-green-800/30">
                     {{ count($post->upvotes) ?? 0 }}<flux:icon.arrow-up variant="mini" /> 
                 </span>
-               <span class="flex align-middle text-red-400 p-1.5 rounded border-1 border-red-400 hover:bg-red-100">
+               <span class="flex align-middle text-red-400 p-1.5 rounded border-1 border-red-400 hover:bg-red-200/30 dark:hover:bg-red-800/30">
                     {{ count($post->downvotes) ?? 0 }}<flux:icon.arrow-down variant="mini" /> 
                </span>
             </div>
