@@ -1,7 +1,8 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    <x-card class="mb-2.5 p-4">
+    <x-card class="p-4">
         <div class="flex items-center gap-2 px-1 py-1.5 text-start text-sm">
+            {{-- {{ $author->name }} --}}
             @if(isset($post->user->image_url))
                 <span class="relative flex w-14 h-14 shrink-0 overflow-hidden rounded-lg">
                     <img src="{{ $post->user->image_url }}" class="flex h-full w-full items-center justify-center rounded-lg bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
