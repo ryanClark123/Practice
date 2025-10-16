@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Card extends Component
 {
-    public Post $post;
-    
-    public function mount(Post $post_id){
-        $this->post = $post_id;
+    public $post;
+    public $author;
+
+    public function mount(Post $post){
+        $this->post = $post;
+        // dd($this->post);
     }
 
     public function render()
