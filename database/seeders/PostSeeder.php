@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
        $user_ids = User::get('id');
 
        foreach ($user_ids as $user_id) {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i <= rand(0,5); $i++) {
             Post::factory()->create([
                 'user_id'=> $user_id,
                 'updated_at' => null

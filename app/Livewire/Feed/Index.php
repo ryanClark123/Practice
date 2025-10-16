@@ -11,7 +11,7 @@ class Index extends Component
     use WithPagination;
     public $perPage = 10;
     public function getPosts(){
-        $post = Post::query()->with(['user', 'users', 'upvotes', 'downvotes'])->paginate($this->perPage);
+        $post = Post::query()->orderBy('title', 'asc')->with(['user', 'users', 'upvotes', 'downvotes'])->paginate($this->perPage);
         // dd($post->orderBy('upvotes_count', 'desc')->paginate($this->perPage));
             // dd($post);
         return $post;
