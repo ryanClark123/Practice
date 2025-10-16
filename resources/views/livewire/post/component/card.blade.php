@@ -21,19 +21,40 @@
                 <flux:label size="lg" class="text-xl"> {{ $post->title ?? 'N/A' }} </flux:label>
                 <flux:text size="sm" class="pb-1" variant="subtle">Author: {{ $post->user->name }}</flux:text>
                 <flux:text size="sm" class="pb-1" variant="subtle">{{ $post->created_at->format('F j, Y, g:i a') }}</flux:text>
+                {{-- <span>You voted: {{ $post->voteByUser(Auth::id()) }}</span> --}}
             </div>
 
             {{-- VOTES --}}
             <div class="w-auto flex flex-col gap-1 font-bold">
-                <span class="flex text-green-400 p-1.5 rounded border-1 border-green-400 hover:bg-green-200/30 dark:hover:bg-green-800/30">
+                {{-- {{ $vote_type ?? 'N/A' }} --}}
+                <span class="
+                flex 
+                p-1.5
+                text-green-400 
+                rounded border-1 
+                border-green-400 
+                hover:text-green-50 
+                hover:bg-green-200/30 
+                dark:hover:bg-green-400
+                {{ $vote_type === 'up' ? 'dark:text-green-50 dark:bg-green-400' : '' }}
+                ">
                     {{ count($post->upvotes) ?? 0 }}<flux:icon.arrow-up variant="mini" /> 
                 </span>
-               <span class="flex align-middle text-red-400 p-1.5 rounded border-1 border-red-400 hover:bg-red-200/30 dark:hover:bg-red-800/30">
+               <span class="
+                flex
+                p-1.5 rounded 
+                border-1 border-red-400 
+                text-red-400 
+                hover:text-red-50 
+                hover:bg-red-200/30 
+                dark:hover:bg-red-400
+                {{ $vote_type === 'down' ? 'dark:text-red-50 dark:bg-red-400' : '' }}
+                " >
                     {{ count($post->downvotes) ?? 0 }}<flux:icon.arrow-down variant="mini" /> 
                </span>
             </div>
         </div>
         
-        <flux:text size="md" class="ml-8 w-4/5"> {{ $post->content ?? 'N/A' }} </flux:text>
+        <flux:text size="md" class="mx-5 text-justify indent-8"> {{ $post->content ?? 'N/A' }} </flux:text>
     </x-card>
 </div>

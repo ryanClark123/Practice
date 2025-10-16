@@ -1,13 +1,13 @@
 <div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-    <div class="grid md:grid-cols-3 gap-2.5">
+    <div class="grid lg:grid-cols-3 gap-2.5">
         <div class="col-span-2 [&>*]:mb-3">
             <flux:input icon="magnifying-glass" placeholder="Search post" />
             {{-- <span class="text-center w-full">Post Area</span> --}}
             {{-- <x-placeholder-pattern class="w-full stroke-gray-900/20 dark:stroke-neutral-100/20" /> --}}
             @forelse ($posts as $post)
-            {{-- @dd($post) --}}
                 {{-- @include('components.lazy-loading-placeholder') --}}
+                {{-- {{ dd($post?->voteByUser(Auth::id())) }} --}}
                 <livewire:post.component.card wire:key="post-card-{{ $post->id }}" :post="$post" />
             @empty
                 
