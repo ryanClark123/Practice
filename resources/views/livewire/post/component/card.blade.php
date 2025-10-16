@@ -28,6 +28,7 @@
             <div class="w-auto flex flex-col gap-1 font-bold">
                 {{-- {{ $vote_type ?? 'N/A' }} --}}
                 <span class="
+                cursor-pointer
                 flex 
                 p-1.5
                 text-green-400 
@@ -37,10 +38,11 @@
                 hover:bg-green-200/30 
                 dark:hover:bg-green-400
                 {{ $vote_type === 'up' ? 'dark:text-green-50 dark:bg-green-400' : '' }}
-                ">
+                " wire:click="setVote('up')">
                     {{ count($post->upvotes) ?? 0 }}<flux:icon.arrow-up variant="mini" /> 
                 </span>
                <span class="
+               cursor-pointer
                 flex
                 p-1.5 rounded 
                 border-1 border-red-400 
@@ -49,7 +51,7 @@
                 hover:bg-red-200/30 
                 dark:hover:bg-red-400
                 {{ $vote_type === 'down' ? 'dark:text-red-50 dark:bg-red-400' : '' }}
-                " >
+                " wire:click="setVote('down')" >
                     {{ count($post->downvotes) ?? 0 }}<flux:icon.arrow-down variant="mini" /> 
                </span>
             </div>

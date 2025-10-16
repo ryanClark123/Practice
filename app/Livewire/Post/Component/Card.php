@@ -13,20 +13,32 @@ class Card extends Component
     
     public function mount(Post $post){
         $this->post = $post;
-        $this->vote_type = $post->voteByUser(Auth::id());
-        // dd($this->vote_type);
+        // dd($this->post);
     }
 
-    public function upvote(){
+    public function setVote($vote_type){
+        $existingVote = $this->vote_type;
 
+        if (!$existingVote) {
+            $this->post->users()->attach(Auth::id(), ['vote_type' => $vote_type]);
+        }
+
+        else if ($existingVote === $vote_type) {
+            $this->post->users()->detach(Auth::id());
+        }
+
+        else if ($existingVote !== $vote_type) {
+            $this->post->users()->updateExistingPivot(Auth::id(), ['vote_type' => $vote_type]);
+        }
     }
 
-    public function downvote(){
 
-    }
+    
 
     public function render()
     {
+        // $this->setVote();
+        $this->vote_type = $this->post->voteByUser(Auth::id());
         return view('livewire.post.component.card');
     }
 }
